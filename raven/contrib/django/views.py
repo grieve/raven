@@ -6,7 +6,7 @@ raven.contrib.django.views
 :license: BSD, see LICENSE for more details.
 """
 
-import simplejson
+from django.utils import simplejson
 
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseForbidden, HttpResponseBadRequest

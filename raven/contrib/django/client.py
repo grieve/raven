@@ -42,6 +42,8 @@ class DjangoClient(Client):
     def get_data_from_request(self, request):
         from django.contrib.auth.models import User, AnonymousUser
 
+        self.name = request.META['SERVER_NAME']
+
         if request.method != 'GET':
             try:
                 data = request.raw_post_data and request.raw_post_data or request.POST

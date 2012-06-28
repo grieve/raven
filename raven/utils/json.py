@@ -7,7 +7,7 @@ raven.utils.json
 """
 
 import datetime
-import simplejson
+from django.utils import simplejson
 import uuid
 
 
