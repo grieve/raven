@@ -10,7 +10,6 @@ Represents the default values for all Sentry settings.
 
 import os
 import os.path
-#import socket
 
 ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir))
 
@@ -25,8 +24,15 @@ TIMEOUT = 5
 # TODO: this is specific to Django
 CLIENT = 'raven.contrib.django.DjangoClient'
 
-#NAME = socket.gethostname()
-NAME = "not available"
+try:
+    import socket
+    NAME = socket.gethostname()
+except:
+    try:
+        from google.appengine.api.app_identity import get_application_id
+        NAME = get_application_id()
+    except:
+        NAME = "not available"
 
 # Superuser key -- will be used if set, otherwise defers to
 # SECRET_KEY and PUBLIC_KEY
